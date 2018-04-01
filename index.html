@@ -106,6 +106,7 @@
   const keys = document.querySelectorAll('.key')
 
   function handleMouseDown(e) {
+    e.preventDefault()
     const dataKey = this.getAttribute('data-key')
     playAudio(dataKey)
     addTransition(dataKey)
@@ -116,6 +117,7 @@
   }
 
   function handleMouseUp(e) {
+    e.preventDefault()
     clearInterval(intervalID)
   }
 
@@ -123,7 +125,12 @@
     key.addEventListener('transitionend', removeTransition)
     key.addEventListener('mousedown', handleMouseDown)
     key.addEventListener('mouseup', handleMouseUp)
+    key.addEventListener('touchstart', handleMouseDown)
+    key.addEventListener('touchend', handleMouseUp)
   }
+
+  // TOUCH
+
 </script>
 
 
